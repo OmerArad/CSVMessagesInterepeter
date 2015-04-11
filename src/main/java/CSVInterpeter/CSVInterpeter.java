@@ -6,10 +6,10 @@ import com.google.gson.Gson;
 import java.io.*;
 
 public class CSVInterpeter {
+
     public static void main(String[] args) {
        CSVInterpeter obj = new CSVInterpeter();
         obj.run();
-
     }
 
     public void run() {
@@ -17,11 +17,10 @@ public class CSVInterpeter {
 
         // Input CSV FILE + Output file name:
         String csvFile = "/Users/omer/Desktop/Tweets/tweets15M.csv";
-        String fileNameToSave = "/Users/omer/Desktop/Tweets/1KNewestFormat.json";
+        String fileNameToSave = "/Users/omer/Desktop/Tweets/1MMessages.json";
 
         // The number of messages you want to convert to the JSON file:
-//        int numOfMessages = 5000000;
-        int numOfMessages = 1000;
+        int numOfMessages = 1000000;
 
         // Would you like to save also the Messages themselves or just the Location + Time ?
         Boolean saveMessagesData = true;
@@ -70,7 +69,6 @@ public class CSVInterpeter {
                 String json = "";
                 if (lineNumber == 0) {
                     json = "{\"type\":\"FeatureCollection\", \"features\": [";
-//                                                                                      json = "[";
                 } else {
                     json+=",";
                 }
@@ -84,7 +82,6 @@ public class CSVInterpeter {
 
             }
             writer.write("]}");
-//                                                                            writer.write("]");
             writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
